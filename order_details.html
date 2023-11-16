@@ -1,0 +1,106 @@
+<!-- order_details.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Details</title>
+    <!-- Add your CSS link here -->
+    <style>
+        /* order_details.css */
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
+
+#order-summary {
+    max-width: 600px;
+    margin: 20px auto;
+    text-align: center;
+}
+
+#order-items {
+    list-style: none;
+    padding: 0;
+}
+
+#order-items li {
+    margin-bottom: 5px;
+}
+
+#greeting {
+    max-width: 600px;
+    margin: 20px auto;
+    text-align: center;
+}
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Order Details</h1>
+    </header>
+
+    <section id="order-summary">
+        <h2>Order Summary</h2>
+        <ul id="order-items">
+            <!-- Order items will be displayed here -->
+        </ul>
+        <p>Total: $<span id="order-total">0.00</span></p>
+        <p>Estimated Delivery: <span id="delivery-date">Next Week</span></p>
+    </section>
+
+    <section id="greeting">
+        <h2>Thank You!</h2>
+        <p>Dear user, thank you for shopping with us. Your order is on its way!</p>
+    </section>
+
+    <script>
+        // JavaScript for order details as needed
+        // ...
+
+        // For demonstration purposes, let's assume some order details
+        const orderItems = [
+            { name: 'Product 1', price: 19.99 },
+            { name: 'Product 2', price: 29.99 }
+            // Add more items if needed
+        ];
+
+        function displayOrderDetails() {
+            const orderItemsElement = document.getElementById('order-items');
+            const orderTotalElement = document.getElementById('order-total');
+            const deliveryDateElement = document.getElementById('delivery-date');
+
+            let orderItemsHtml = '';
+            let total = 0;
+
+            orderItems.forEach(item => {
+                orderItemsHtml += `<li>${item.name} - $${item.price.toFixed(2)}</li>`;
+                total += item.price;
+            });
+
+            orderItemsElement.innerHTML = orderItemsHtml;
+            orderTotalElement.textContent = total.toFixed(2);
+
+            // For demonstration purposes, let's set a delivery date
+            const deliveryDate = new Date();
+            deliveryDate.setDate(deliveryDate.getDate() + 7); // Next week
+            deliveryDateElement.textContent = deliveryDate.toDateString();
+        }
+
+        // Call the function to display order details
+        displayOrderDetails();
+    </script>
+</body>
+</html>
